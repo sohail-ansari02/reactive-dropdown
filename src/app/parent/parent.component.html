@@ -1,0 +1,16 @@
+<p>parent works!</p>
+<label for="">states: </label>
+<select multiple [formControl]="fc" name="" id="">
+  <option value="">
+    -- Select One -- 
+  </option>
+  @for (item of (stateList$ | async); track $index) {
+    <option [value]="item.id">
+      {{item.name | titlecase}}
+    </option>
+  }
+</select>
+<code>
+  selected state is: {{(fc.valueChanges | async)| json}}
+</code>
+<app-district-list [districts]="districtsList" />
